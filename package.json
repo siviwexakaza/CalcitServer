@@ -1,0 +1,19 @@
+{
+  "name": "calcitserver",
+  "version": "1.0.0",
+  "description": "Backend for the calcit app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siviwexakaza/CalcitServer.git"
+  },
+  "author": "Siviwe Xakaza & Ntandoyenkosi Siwela",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/siviwexakaza/CalcitServer/issues"
+  },
+  "homepage": "https://github.com/siviwexakaza/CalcitServer#readme"
+}

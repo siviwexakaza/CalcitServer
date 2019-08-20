@@ -4,7 +4,7 @@ const User = require('../../models/User');
 
 
 //Login
-route.get('/',(req,res)=>{
+route.post('/login',(req,res)=>{
     
 
     User.find({"Username": req.body.Username, "Password": req.body.Password}).then((user)=>{
@@ -22,7 +22,7 @@ route.get('/',(req,res)=>{
 });
 
 //Register
-route.post('/',(req,res)=>{
+route.post('/register',(req,res)=>{
 
     nUser = new User({
         Name : req.body.Name,

@@ -27,13 +27,13 @@ route.post('/forgot',(req,res)=>{
                 text: `Hello ${user[0].Name}, your password is ${user[0].Password}`// plain text body
             };
 
-            res.json(mailOptions);
+            
             
             transporter.sendMail(mailOptions, function (err, info) {
                 if(err)
-                    console.log(err)
+                res.json([{"Message":"Email not found","Status":"Failed"}]);
                 else
-                    console.log(info);
+                res.json([{"Message":"Password Sent","Status":"Success"}]);
             });
 
 

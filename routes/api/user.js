@@ -1,6 +1,51 @@
 const express = require('express');
 const route = express.Router();
 const User = require('../../models/User');
+const nodemailer = require('nodemailer');
+
+
+
+//Forgot
+
+route.post('/forgot',(req,res)=>{
+
+    User.find({"Email" : req.body.Email}).then((user)=>{
+        if(user.length >0){
+
+            var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'siviwexakaza@gmail.com',
+                    pass: 'xboyfan01'
+                }
+            });
+            
+            const mailOptions = {
+                from: '"Siviwe Xakaza" siviwexakaza@gmail.com', // sender address
+                to: `${req.body.Email}`, // list of receivers
+                subject: 'Calcit Password Reminder', // Subject line
+                text: `Hello ${user[0].Name}, your password is ${user[0].Password}`// plain text body
+            };
+
+            res.json(mailOptions);
+            
+            transporter.sendMail(mailOptions, function (err, info) {
+                if(err)
+                    console.log(err)
+                else
+                    console.log(info);
+            });
+
+
+        }else{
+
+            res.json([{"Error":"Email not found","Status":"Failed"},{"Action":"Try again"}]);
+             
+        }
+    });
+    
+    
+});
 
 
 //Login
@@ -15,8 +60,6 @@ route.post('/login',(req,res)=>{
             res.json([{"Error":"Incorrect username/password","Status":"Failed"},{"Action":"Try again"}]);
         }
 
-
-
     }).catch(err=> res.send(err));
 
 });
@@ -24,19 +67,33 @@ route.post('/login',(req,res)=>{
 //Register
 route.post('/register',(req,res)=>{
 
-    nUser = new User({
-        Name : req.body.Name,
-        Surname: req.body.Surname,
-        Email: req.body.Email,
-        Password: req.body.Password,
-        Username: req.body.Username
+    User.find({"Username": req.body.Username}).then((user)=>{
+
+        if(user.length > 0){
+
+            res.json([{"Error":"Username already taken","Status":"Failed"},{"Action":"Try again"}]);
+
+        }else{
+
+            nUser = new User({
+                Name : req.body.Name,
+                Surname: req.body.Surname,
+                Email: req.body.Email,
+                Password: req.body.Password,
+                Username: req.body.Username
+            });
+        
+            nUser.save().then((newUser)=>{
+        
+                res.json(newUser);
+        
+            });
+
+        }
+
     });
 
-    nUser.save().then((newUser)=>{
-
-        res.json(newUser);
-
-    });
+    
 
 });
 

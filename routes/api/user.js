@@ -16,7 +16,7 @@ route.post('/forgot',(req,res)=>{
                 service: 'gmail',
                 auth: {
                     user: 'siviwexakaza@gmail.com',
-                    pass: '****************'
+                    pass: '***'
                 }
             });
             
@@ -80,7 +80,8 @@ route.post('/register',(req,res)=>{
                 Surname: req.body.Surname,
                 Email: req.body.Email,
                 Password: req.body.Password,
-                Username: req.body.Username
+                Username: req.body.Username,
+                Phone: req.body.Phone
             });
         
             nUser.save().then((newUser)=>{

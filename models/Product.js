@@ -4,7 +4,8 @@ const ProductSchema = mongoose.Schema({
     Name:{type: String},
     Details:{type:String},
     Cost:{type:Number},
-    BusinessID:{type:String}
+    BusinessID:{type:String},
+    Username:{type:String}
 
 });
 

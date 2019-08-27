@@ -15,7 +15,8 @@ router.post('/',(req,res)=>{
         Name: req.body.Name,
         Details: req.body.Details,
         Cost: req.body.Cost,
-        BusinessID: req.body.BusinessID
+        BusinessID: req.body.BusinessID,
+        Username: req.body.Username
     });
 
     nProduct.save().then((newProd)=>{

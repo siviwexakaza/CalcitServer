@@ -4,6 +4,12 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 5000;
 const user = require('./routes/api/user');
+const bank = require('./routes/api/bank');
+const business = require('./routes/api/business');
+const contact = require('./routes/api/contact');
+const product = require('./routes/api/product');
+const invoice = require('./routes/api/invoice');
+
 
 const app = express();
 app.use(bodyParser.json());
@@ -17,6 +23,11 @@ app.get('/',(req,res)=>{
 });
 
 app.use('/api/user',user);
+app.use('/api/bank',bank);
+app.use('/api/business',business);
+app.use('/api/contact',contact);
+app.use('/api/product',product);
+app.use('/api/invoice',invoice);
 
 app.listen(port,()=>{
     console.log(`Server running on port ${port}`);

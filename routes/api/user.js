@@ -16,7 +16,7 @@ route.post('/forgot',(req,res)=>{
                 service: 'gmail',
                 auth: {
                     user: 'siviwexakaza@gmail.com',
-                    pass: '***'
+                    pass: '****'
                 }
             });
             

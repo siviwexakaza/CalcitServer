@@ -19,6 +19,8 @@ router.post('/',(req,res)=>{
         Username:req.body.Username
     });
 
+    nBusiness.save().then(d=>res.json(d)).catch(e=>res.send(e));
+
 });
 
 module.exports = router;

@@ -10,6 +10,7 @@ router.get('/:id',(req,res)=>{
     }).catch(err=>res.status(400).json(err));
 });
 
+
 router.post('/',(req,res)=>{
     nProduct = new Product({
         Name: req.body.Name,

@@ -10,6 +10,14 @@ router.get('/:id',(req,res)=>{
     }).catch(err=>res.send(err));
 });
 
+router.get('/view/:id',(req,res)=>{
+    Business.find({"_id":req.params.id}).then((businesses)=>{
+
+        res.json(businesses);
+
+    }).catch(err=>res.send(err));
+});
+
 router.post('/',(req,res)=>{
     nBusiness = new Business({
         Name:req.body.Name,

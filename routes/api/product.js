@@ -25,4 +25,26 @@ router.post('/',(req,res)=>{
     }).catch(err=>res.send(err));
 });
 
+router.put('/:id',(req,res)=>{
+
+    Product.findById(req.params.id).then((product)=>{
+        product.Name = req.body.Name;
+        product.Details = req.body.Details;
+        product.Cost = req.body.Cost;
+        product.save().then((newProduct)=>res.json(newProduct)).catch(e=>res.send(e));
+
+    }).catch(e=>res.send(e));
+
+});
+
+router.delete('/:id',(req,res)=>{
+
+    Product.findById(req.params.id).then((prod)=>{
+
+        prod.delete().then((p)=>res.json(p)).catch(e=>res.send(e));
+
+    }).catch(err=>res.status(400).json(err));
+
+});
+
 module.exports = router;

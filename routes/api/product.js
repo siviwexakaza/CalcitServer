@@ -10,6 +10,13 @@ router.get('/:id',(req,res)=>{
     }).catch(err=>res.status(400).json(err));
 });
 
+router.get('/:id',(req,res)=>{
+    Product.findById(req.params.id).then((prod)=>{
+        res.json(prod);
+
+    }).catch(e=>res.send(e));
+});
+
 
 router.post('/',(req,res)=>{
     nProduct = new Product({

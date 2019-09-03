@@ -64,6 +64,25 @@ route.post('/login',(req,res)=>{
 
 });
 
+route.get('/profile/:id',(req,res)=>{
+    User.findById(req.params.id).then((usr)=>{
+        res.json(usr);
+
+    }).catch(e=>res.send(e));
+});
+
+route.put('/profile/:id',(req,res)=>{
+    User.findById(req.params.id).then((usr)=>{
+        usr.Name = req.body.Name;
+        usr.Surname = req.body.Surname;
+        usr.Phone = req.body.Phone;
+
+        usr.save().then((newUser)=>res.json(newUser))
+        .catch(e=>res.send(e));
+
+    }).catch(e=>res.send(e));
+});
+
 //Register
 route.post('/register',(req,res)=>{
 

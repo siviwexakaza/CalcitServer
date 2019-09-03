@@ -7,4 +7,4 @@ const BankSchema = mongoose.Schema({
     BusinessID:{type:String}
 });
 
-module.export = mongoose.model('Bank',BankSchema);
+module.exports = mongoose.model('Bank',BankSchema);

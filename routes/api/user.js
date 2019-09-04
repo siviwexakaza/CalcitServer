@@ -65,7 +65,7 @@ route.post('/login',(req,res)=>{
 });
 
 route.get('/profile/:id',(req,res)=>{
-    User.findById(req.params.id).then((usr)=>{
+    User.find({"Username":req.params.id}).then((usr)=>{
         res.json(usr);
 
     }).catch(e=>res.send(e));

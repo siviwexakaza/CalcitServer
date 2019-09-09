@@ -10,6 +10,12 @@ router.get('/:id',(req,res)=>{
     }).catch(err=>res.send(err));
 });
 
+router.post('/GetBusinessByName',(req,res)=>{
+    Business.find({"Username":req.body.Username , "Name": req.body.Name}).then((biz)=>{
+        res.json(biz);
+    });
+});
+
 router.get('/view/:id',(req,res)=>{
     Business.find({"_id":req.params.id}).then((businesses)=>{
 

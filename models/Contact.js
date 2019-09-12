@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const ConactSchema = mongoose.Schema({
     Name:{type:String},
-    Phone:{type:Number},
+    Phone:{type:String},
     Email:{type:String},
     BusinessID:{type:String}
 });

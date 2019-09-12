@@ -3,7 +3,7 @@ const router = express.Router();
 const Contact = require('../../models/Contact');
 
 router.get('/:id',(req,res)=>{
-    Contact.find({"Username":req.params.id}).then((contacts)=>{
+    Contact.find({"BusinessID":req.params.id}).then((contacts)=>{
 
         res.json(contacts);
 
@@ -18,7 +18,13 @@ router.post('/',(req,res)=>{
         Name:req.body.Name,
         Phone:req.body.Phone,
         Email:req.body.Email,
-        Username: req.body.Username
+        BusinessID: req.body.BusinessID
+    });
+
+    nContact.save().then((con)=>{
+
+        res.json(con);
+
     });
 
 });

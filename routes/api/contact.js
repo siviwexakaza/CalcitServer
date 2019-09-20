@@ -11,6 +11,16 @@ router.get('/:id',(req,res)=>{
 
 });
 
+router.get('/person/:id',(req,res)=>{
+
+    Contact.findById(req.params.id).then((person)=>{
+        res.json(person);
+    }).catch(e=>res.send(e));
+
+
+
+});
+
 
 router.post('/',(req,res)=>{
 

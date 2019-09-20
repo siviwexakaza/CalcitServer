@@ -29,7 +29,10 @@ router.post('/',(req,res)=>{
         BusinessID:req.body.BusinessID,
         Amount:req.body.Amount,
         Due: req.body.Due,
-        Paid: req.body.Paid
+        Paid: req.body.Paid,
+        Items: req.body.Items,
+        Quantities: req.body.Quantities,
+        Amount: req.body.Amount
     });
 
     nInvoice.save().then((newInvoice)=>{

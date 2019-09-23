@@ -13,6 +13,20 @@ router.get('/business/:id',(req,res)=>{
 
 });
 
+
+router.get('/business/paid/:id',(req,res)=>{
+    
+    //Pass True to see paid invoices, False for outstanding ones
+
+    Invoice.find({"BusinessID":req.params.id, "Paid":req.body.Status}).then((invoices)=>{
+
+        res.json(invoices);
+
+    }).catch(e=>res.send(e));
+
+});
+
+
 router.get('/customer/:id',(req,res)=>{
 
     Invoice.find({"ContactID":req.params.id}).then((invoices)=>{
@@ -22,6 +36,20 @@ router.get('/customer/:id',(req,res)=>{
     }).catch(e=>res.send(e));
 
 });
+
+
+router.get('/customer/paid/:id',(req,res)=>{
+
+    //Pass True to see paid invoices, False for outstanding ones
+
+    Invoice.find({"ContactID":req.params.id,"Paid":req.body.Status}).then((invoices)=>{
+
+        res.json(invoices);
+
+    }).catch(e=>res.send(e));
+
+});
+
 
 router.post('/',(req,res)=>{
     nInvoice = new Invoice({

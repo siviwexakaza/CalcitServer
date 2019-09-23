@@ -13,6 +13,17 @@ router.get('/business/:id',(req,res)=>{
 
 });
 
+router.get('/open/:id',(req,res)=>{
+    
+
+    Invoice.findById(req.params.id).then((invoices)=>{
+
+        res.json(invoices);
+
+    }).catch(e=>res.send(e));
+
+});
+
 
 router.get('/business/paid/:id',(req,res)=>{
     

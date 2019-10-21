@@ -64,6 +64,9 @@ route.post('/login',(req,res)=>{
 
 });
 
+//get user object
+
+
 route.get('/profile/:id',(req,res)=>{
     User.find({"Username":req.params.id}).then((usr)=>{
         res.json(usr);

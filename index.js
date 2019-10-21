@@ -14,6 +14,7 @@ const invoice = require('./routes/api/invoice');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+app.use(bodyParser.urlencoded({extended:false}));
 
 mongoose.connect('mongodb+srv://siviwe:246810@expose-t6srn.mongodb.net/cityboarddb?retryWrites=true&w=majority',{useNewUrlParser :true})
 .then(()=>{console.log('DB Connected')}).catch(err=>console.log(err));

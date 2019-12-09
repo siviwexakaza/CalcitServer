@@ -9,6 +9,8 @@ const business = require('./routes/api/business');
 const contact = require('./routes/api/contact');
 const product = require('./routes/api/product');
 const invoice = require('./routes/api/invoice');
+const bill = require('./routes/api/bill');
+const expense = require('./routes/api/expense');
 
 
 const app = express();
@@ -29,6 +31,8 @@ app.use('/api/business',business);
 app.use('/api/contact',contact);
 app.use('/api/product',product);
 app.use('/api/invoice',invoice);
+app.use('/api/bill',bill);
+app.use('/api/expense',expense);
 
 app.listen(port,()=>{
     console.log(`Server running on port ${port}`);

@@ -12,7 +12,7 @@ router.get('/:id',(req,res)=>{
 
 
 router.post('/',(req,res)=>{
-    nProduct = new Bill({
+    nProduct = new Expense({
         Name: req.body.Name,
         Price: req.body.Price,
         BusinessID: req.body.BusinessID,
